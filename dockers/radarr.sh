@@ -8,6 +8,7 @@ docker create \
   -v /mnt/media-center/config/radarr:/config \
   -v /mnt/media-center/plex/movies:/movies \
   -v /mnt/media-center/download:/downloads \
+  -v /mnt/media-center/bash_scripts:/scripts \
   --restart unless-stopped \
   linuxserver/radarr
 

@@ -1,4 +1,5 @@
-diretorio='/mnt/media-center/plex/movies/'
+# diretorio='/mnt/media-center/plex/movies/'
+diretorio=$1
 
 find $diretorio -maxdepth 1 | while read item
 do

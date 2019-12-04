@@ -82,7 +82,7 @@ then
 
       SANITY=$(curl -s "https://www.googleapis.com/youtube/v3/videos?part=id&id=${YOUTUBE}&key=${KEY2}" | tac | tac | jq -r '.' | grep totalResults | sed 's/[^0-9]*//g')
 
-      if [[ ${SANITY} -eq 1 ]]
+      if [ ! -z ${YOUTUBE} ]
         then
           printf '\n'"YouTube trailer exists, attempting to download." >&2
           rm /tmp/movie-trailer.*  >/dev/null 2>&1
@@ -101,8 +101,6 @@ then
             printf '\n'"Trailer downloaded: ${TRAILERNAME}" >&2
           fi
         else
-        if [[ ${SANITY} -eq 0 ]]
-        then
           if [ "${lang}" != "en-US" ]; then
             printf '\n'"Retring with the english version"'\n' >&2
             lang=en-US
@@ -110,9 +108,6 @@ then
           else
             printf '\n'"YouTube trailer does not exist. (End of the line)"'\n' >&2
           fi
-        else
-          printf '\n'"WTF, something is very wrong. (You should never see this message..)" >&2
-        fi
       fi
   
   done
