@@ -75,12 +75,12 @@ if [ ! -f movie-trailer.* ]
     # no idea why this happens, or how to fix it.  XD
     # now with 100% more validity checking!  that will "probably" work and not break the process?
 
-    SANITY=$(curl -s "https://www.googleapis.com/youtube/v3/videos?part=id&id=${YOUTUBE}&key=${KEY2}" | tac | tac | jq -r '.' | grep totalResults | sed 's/[^0-9]*//g')
+    # SANITY=$(curl -s "https://www.googleapis.com/youtube/v3/videos?part=id&id=${YOUTUBE}&key=${KEY2}" | tac | tac | jq -r '.' | grep totalResults | sed 's/[^0-9]*//g')
 
-    if [[ ${SANITY} -eq 1 ]]
+    if [ ! -z ${YOUTUBE} ]
       then
         printf "YouTube trailer exists, attempting to download." >&2
-        youtube-dl -f 'bestvideo[height<='${RES3}'][vcodec!=av01.0.05M.08]+bestaudio/best[height<='${RES3}'][vcodec!=av01.0.05M.08]' -q "https://www.youtube.com/watch?v=${YOUTUBE}" -o movie-trailer --restrict-filenames --merge-output-format mkv
+        youtube-dl -f 'bestvideo[height<='${RES3}'][vcodec!=av01.0.05M.08]+bestaudio/best[height<='${RES3}'][vcodec!=av01.0.05M.08]' -q "https://www.youtube.com/watch?v=${YOUTUBE}" -o movie-trailer --newline --restrict-filenames --merge-output-format mkv
         result=$?
         if [ ${result} -ne 0 ] && [ "${lang}" != "en-US" ]; then
           printf '\n'"Retring with the english version"'\n' >&2
@@ -92,8 +92,6 @@ if [ ! -f movie-trailer.* ]
           printf '\n'"Trailer downloaded: ${TRAILERNAME}"'\n' >&2
         fi
       else
-      if [[ ${SANITY} -eq 0 ]]
-      then
         if [ "${lang}" != "en-US" ]; then
           printf '\n'"Retring with the english version"'\n' >&2
           lang=en-US
@@ -101,9 +99,6 @@ if [ ! -f movie-trailer.* ]
         else
           printf '\n'"YouTube trailer does not exist. (End of the line)"'\n' >&2
         fi
-      else
-        printf '\n'"WTF, something is very wrong. (You should never see this message..)"'\n' >&2
-      fi
     fi
 
   done
