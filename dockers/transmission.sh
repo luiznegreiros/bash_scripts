@@ -4,8 +4,8 @@ docker create \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=America/Sao_Paulo \
-  -e USER=luiz `#optional` \
-  -e PASS=funcione `#optional` \
+  # -e USER=luiz `#optional` \
+  # -e PASS=funcione `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \

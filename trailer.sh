@@ -80,7 +80,7 @@ then
       # we're always going to assume the file that is output is called movie-trailer.mkv so things could still go wrong
       # now that i think of it, we should probably delete any existing movie-trailer.mkv from /tmp to avoid errors
 
-      SANITY=$(curl -s "https://www.googleapis.com/youtube/v3/videos?part=id&id=${YOUTUBE}&key=${KEY2}" | tac | tac | jq -r '.' | grep totalResults | sed 's/[^0-9]*//g')
+      # SANITY=$(curl -s "https://www.googleapis.com/youtube/v3/videos?part=id&id=${YOUTUBE}&key=${KEY2}" | tac | tac | jq -r '.' | grep totalResults | sed 's/[^0-9]*//g')
 
       if [ ! -z ${YOUTUBE} ]
         then

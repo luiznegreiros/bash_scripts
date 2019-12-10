@@ -12,6 +12,6 @@ do
     if [ -f *.nfo ]
     then
       printf "\n* Fazendo download do trailer do filme '${PWD##*/}'."'\n' >&2
-      ~/bash_scripts/localtrailer.sh
+      /mnt/media-center/bash_scripts/localtrailer.sh
     fi
 done | sort 
