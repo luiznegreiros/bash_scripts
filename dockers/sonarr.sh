@@ -11,4 +11,5 @@ docker create \
   --restart unless-stopped \
   linuxserver/sonarr
 
-docker
+docker start sonarr
+
