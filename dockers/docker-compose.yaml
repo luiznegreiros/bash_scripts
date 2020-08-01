@@ -1,0 +1,98 @@
+version: '3.3'
+services:
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - AUTO_UPDATE=true
+    ports:
+      - 9117:9117
+    volumes:
+      - /home/luiz/media-center-config/jackett:/config
+      - /home/luiz/download:/downloads
+    restart: unless-stopped
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /home/luiz/media-center-config/radarr:/config
+      - /home/luiz/download:/downloads
+      - /home/luiz/bash_scripts:/scripts
+      - /mnt/media-center/plex/movies:/movies
+      - /mnt/media-center/plex/movies:/media/arquivos/plex/movies
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /home/luiz/media-center-config/sonarr:/config
+      - /mnt/tvshows:/tv
+      - /home/luiz/download:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /home/luiz/media-center-config/bazarr:/config
+      - /mnt/media-center/plex/movies:/movies
+      - /mnt/tvshows:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - /home/luiz/media-center-config/plex:/config
+      - /mnt/tvshows:/tv
+      - /home/luiz/transcode:/transcode
+      - /mnt/media-center/plex/movies:/movies
+    restart: unless-stopped
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - USER=luiz #optional
+      - PASS=funcione #optional
+    volumes:
+      - /home/luiz/media-center-config/transmission:/config
+      - /home/luiz/download:/downloads
+      - /home/luiz/download:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped

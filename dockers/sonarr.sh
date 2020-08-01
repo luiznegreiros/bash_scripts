@@ -5,9 +5,9 @@ docker create \
   -e PGID=1000 \
   -e TZ=America/Sao_Paulo \
   -p 8989:8989 \
-  -v /mnt/media-center/config/sonarr:/config \
-  -v /mnt/media-center/plex/tvshows:/tv \
-  -v /mnt/media-center/download:/downloads \
+  -v /home/luiz/media-center-config/sonarr:/config \
+  -v /mnt/tvshows:/tv \
+  -v /home/luiz/download:/downloads \
   --restart unless-stopped \
   linuxserver/sonarr
 
