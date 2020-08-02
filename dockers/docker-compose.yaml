@@ -23,6 +23,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Sao_Paulo
+    links:
+      - plex
     volumes:
       - /home/luiz/media-center-config/radarr:/config
       - /home/luiz/download:/downloads
