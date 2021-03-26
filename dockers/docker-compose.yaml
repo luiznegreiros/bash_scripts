@@ -23,14 +23,12 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Sao_Paulo
-    links:
-      - plex
     volumes:
       - /home/luiz/media-center-config/radarr:/config
       - /home/luiz/download:/downloads
       - /home/luiz/bash_scripts:/scripts
-      - /mnt/media-center/plex/movies:/movies
-      - /mnt/media-center/plex/movies:/media/arquivos/plex/movies
+      - /mnt/movies:/movies
+      - /mnt/movies:/media/arquivos/plex/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -59,7 +57,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /home/luiz/media-center-config/bazarr:/config
-      - /mnt/media-center/plex/movies:/movies
+      - /mnt/movies:/movies
       - /mnt/tvshow:/tv
     ports:
       - 6767:6767
@@ -77,7 +75,10 @@ services:
       - /home/luiz/media-center-config/plex:/config
       - /mnt/tvshow:/tv
       - /home/luiz/transcode:/transcode
-      - /mnt/media-center/plex/movies:/movies
+      - /mnt/movies:/movies
+    ports:
+      - 32400:32400
+      - 32401:32400
     restart: unless-stopped
   transmission:
     image: linuxserver/transmission

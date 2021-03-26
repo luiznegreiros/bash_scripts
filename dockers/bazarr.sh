@@ -6,7 +6,7 @@ docker create \
   -e TZ=America/Sao_Paulo \
   -p 6767:6767 \
   -v /home/luiz/media-center-config/bazarr:/config \
-  -v /mnt/media-center/plex/movies:/movies \
+  -v /mnt/movies:/movies \
   -v /mnt/tvshows:/tv \
   --restart unless-stopped \
   linuxserver/bazarr
