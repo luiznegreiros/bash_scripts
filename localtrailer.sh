@@ -34,12 +34,13 @@ if [ ! -f movie-trailer.* ]
   then
     TT=$(cat movie.nfo | grep tt | cut -d \> -f2 | cut -c1-9)
   else
-    TT=$(cat *.nfo | grep "<id>tt" | cut -d \> -f2 | cut -c1-9)
+    TT=$(cat *.nfo | grep ">tt" | cut -d \> -f2 | cut -c1-9)
     # if [ -z '${TT}' ]
     # then
     #   TT=$(cat *.nfo | grep -a "/tt" | tr -cd '\11\12\40-\176' | cut -d \/ -f5)
     # fi
   fi
+  # echo TT: ${TT}
 
   lang=pt-BR
   retry=1
@@ -48,11 +49,14 @@ if [ ! -f movie-trailer.* ]
     retry=0
 
     # pull tmdb id for film based on imdbid (yes this does indeed require two api calls. should no longer result in Judgement Night, unless it does)
-    TMDB=$(curl -s "http://api.themoviedb.org/3/find/${TT}?api_key=${KEY1}&language=${lang}&external_source=imdb_id" | tac | tac | jq -r '.' | grep "id\"" | sed 's/[^0-9]*//g')
-
+    TMDB=$(curl -s "http://api.themoviedb.org/3/find/${TT}?api_key=${KEY1}&external_source=imdb_id" | tac | tac | jq -r '.' | grep "id\"" | sed 's/[^0-9]*//g')
+    echo TMDB: "http://api.themoviedb.org/3/find/${TT}?api_key=${KEY1}&language=${lang}&external_source=imdb_id"
     # pull trailer video id from tmdb based on tmdb id (imperfect, may not grab anything or may grab an video that is not trailer)
     # never assume just one video in the output. derp.
-    YOUTUBE=$(curl -s "http://api.themoviedb.org/3/movie/${TMDB}/videos?api_key=${KEY1}&language=${lang}" | tac | tac | jq '.results[0]' | grep key | cut -d \" -f4)
+    YOUTUBE=$(curl -s "http://api.themoviedb.org/3/movie/${TMDB}/videos?api_key=${KEY1}" | tac | tac | jq '.results[0]' | grep key | cut -d \" -f4)
+    echo YOUTUBE: http://api.themoviedb.org/3/movie/${TMDB}/videos?api_key=${KEY1}&language=${lang}
+    # echo YOUTUBE: ${YOUTUBE}
+    echo site: https://www.youtube.com/watch?v=${YOUTUBE}
 
     # color for id output (ok?)
 

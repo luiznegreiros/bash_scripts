@@ -6,8 +6,8 @@ docker create \
   -e TZ=America/Sao_Paulo \
   -p 8989:8989 \
   -v /home/luiz/media-center-config/sonarr:/config \
+  -v /home/luiz/Downloads:/downloads \
   -v /mnt/tvshows:/tv \
-  -v /home/luiz/download:/downloads \
   --restart unless-stopped \
   linuxserver/sonarr
 

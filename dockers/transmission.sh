@@ -10,8 +10,8 @@ docker create \
   -p 51413:51413 \
   -p 51413:51413/udp \
   -v /home/luiz/media-center-config/transmission:/config \
-  -v /home/luiz/download:/downloads \
-  -v /home/luiz/download:/watch \
+  -v /home/luiz/Downloads:/downloads \
+  -v /home/luiz/Downloads:/watch \
   --restart unless-stopped \
   linuxserver/transmission
 

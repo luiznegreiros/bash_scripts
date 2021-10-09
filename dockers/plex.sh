@@ -5,8 +5,8 @@ docker create \
   -e PGID=1000 \
   -e VERSION=docker \
   -v /home/luiz/media-center-config/plex:/config \
-  -v /mnt/tvshows:/tv \
   -v /home/luiz/transcode:/transcode \
+  -v /mnt/tvshows:/tv \
   -v /mnt/movies:/movies \
   --restart unless-stopped \
   linuxserver/plex
