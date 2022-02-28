@@ -8,7 +8,8 @@ docker create \
   -v /home/luiz/transcode:/transcode \
   -v /mnt/tvshows:/tv \
   -v /mnt/movies:/movies \
-  --restart unless-stopped \
+  --rm \
   linuxserver/plex
+  # --restart unless-stopped \
 
 docker start plex

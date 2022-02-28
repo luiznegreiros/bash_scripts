@@ -7,7 +7,8 @@ docker create \
   -p 9117:9117 \
   -v /home/luiz/media-center-config/jackett:/config \
   -v /home/luiz/Downloads:/downloads \
-  --restart unless-stopped \
+  --rm \
   linuxserver/jackett
+  # --restart unless-stopped \
   
 docker start jackett

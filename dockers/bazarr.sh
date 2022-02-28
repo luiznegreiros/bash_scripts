@@ -8,7 +8,8 @@ docker create \
   -v /home/luiz/media-center-config/bazarr:/config \
   -v /mnt/movies:/movies \
   -v /mnt/tvshows:/tv \
-  --restart unless-stopped \
+  --rm \
   linuxserver/bazarr
+  # --restart unless-stopped \
   
 docker start bazarr

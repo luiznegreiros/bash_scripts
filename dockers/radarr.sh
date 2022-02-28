@@ -9,8 +9,9 @@ docker create \
   -v /home/luiz/media-center-config/radarr:/config \
   -v /home/luiz/bash_scripts:/scripts \
   -v /mnt/movies:/movies \
-  --restart unless-stopped \
+  --rm \
   linuxserver/radarr
+  # --restart unless-stopped \
 
 docker start radarr
 
