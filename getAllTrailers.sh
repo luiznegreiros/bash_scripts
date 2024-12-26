@@ -1,4 +1,4 @@
-diretorio='/mnt/movies/'
+diretorio='/media/luiz/SAMSUNG/media-center/movies/'
 #diretorio=$1
 
 find $diretorio -maxdepth 1 | while read item

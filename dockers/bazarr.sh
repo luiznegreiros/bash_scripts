@@ -5,11 +5,11 @@ docker create \
   -e PGID=1000 \
   -e TZ=America/Sao_Paulo \
   -p 6767:6767 \
-  -v /home/luiz/media-center-config/bazarr:/config \
-  -v /mnt/movies:/movies \
-  -v /mnt/tvshows:/tv \
+  -v /media/luiz/SAMSUNG/media-center/media-center-config/bazarr:/config \
+  -v /media/luiz/movies:/movies \
+  -v /media/luiz/tv-shows:/tv \
   --rm \
   linuxserver/bazarr
-  # --restart unless-stopped \
-  
+# --restart unless-stopped \
+
 docker start bazarr

@@ -12,7 +12,7 @@ services:
     ports:
       - 9117:9117
     volumes:
-      - /home/luiz/media-center-config/jackett:/config
+      - /home/luiz/media-center/media-center-config/jackett:/config
       - /home/luiz/download:/downloads
     restart: unless-stopped
   radarr:
@@ -24,11 +24,11 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - /home/luiz/media-center-config/radarr:/config
+      - /home/luiz/media-center/media-center-config/radarr:/config
       - /home/luiz/download:/downloads
       - /home/luiz/bash_scripts:/scripts
-      - /mnt/movies:/movies
-      - /mnt/movies:/media/arquivos/plex/movies
+      - /media/luiz/SAMSUNG/media-center/movies:/movies
+      - /media/luiz/SAMSUNG/media-center/movies:/media/arquivos/plex/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -41,7 +41,7 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - /home/luiz/media-center-config/sonarr:/config
+      - /home/luiz/media-center/media-center-config/sonarr:/config
       - /mnt/tvshow:/tv
       - /home/luiz/download:/downloads
     ports:
@@ -56,8 +56,8 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - /home/luiz/media-center-config/bazarr:/config
-      - /mnt/movies:/movies
+      - /home/luiz/media-center/media-center-config/bazarr:/config
+      - /media/luiz/SAMSUNG/media-center/movies:/movies
       - /mnt/tvshow:/tv
     ports:
       - 6767:6767
@@ -72,10 +72,10 @@ services:
       - VERSION=docker
       - PLEX_CLAIM= #optional
     volumes:
-      - /home/luiz/media-center-config/plex:/config
+      - /home/luiz/media-center/media-center-config/plex:/config
       - /mnt/tvshow:/tv
       - /home/luiz/transcode:/transcode
-      - /mnt/movies:/movies
+      - /media/luiz/SAMSUNG/media-center/movies:/movies
     ports:
       - 32400:32400
       - 32401:32400
@@ -91,7 +91,7 @@ services:
       - USER=luiz #optional
       - PASS=funcione #optional
     volumes:
-      - /home/luiz/media-center-config/transmission:/config
+      - /home/luiz/media-center/media-center-config/transmission:/config
       - /home/luiz/download:/downloads
       - /home/luiz/download:/watch
     ports:

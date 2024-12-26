@@ -5,14 +5,14 @@ docker create \
   -e PGID=1000 \
   -e TZ=America/Sao_Paulo \
   -p 7878:7878 \
-  -v /home/luiz/Downloads:/downloads \
-  -v /home/luiz/media-center-config/radarr:/config \
-  -v /home/luiz/bash_scripts:/scripts \
-  -v /mnt/movies:/movies \
+  -v /media/luiz/SAMSUNG/media-center/media-center-config/radarr:/config \
+  -v /media/luiz/SAMSUNG/media-center/bash_scripts:/scripts \
+  -v /media/luiz/SAMSUNG/media-center/downloads/movies:/downloads/Movies \
+  -v /media/luiz/movies:/movies \
+  -v /media/luiz/movies:/media/arquivos/plex/movies \
   --rm \
   linuxserver/radarr
-  # --restart unless-stopped \
+# -v /media/luiz/movies/0.downloads:/downloads \
+# --restart unless-stopped \
 
 docker start radarr
-
-

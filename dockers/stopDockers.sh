@@ -1,0 +1,1 @@
+docker stop bazarr sonarr radarr transmission plex jackett flaresolverr

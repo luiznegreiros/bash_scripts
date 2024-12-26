@@ -5,10 +5,10 @@ docker create \
   -e PGID=1000 \
   -e TZ=America/Sao_Paulo \
   -p 9117:9117 \
-  -v /home/luiz/media-center-config/jackett:/config \
-  -v /home/luiz/Downloads:/downloads \
+  -v /media/luiz/SAMSUNG/media-center/media-center-config/jackett:/config \
+  -v /media/luiz/SAMSUNG/media-center/downloads:/downloads \
   --rm \
   linuxserver/jackett
-  # --restart unless-stopped \
-  
+# --restart unless-stopped \
+
 docker start jackett

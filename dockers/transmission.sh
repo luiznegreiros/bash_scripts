@@ -10,10 +10,10 @@ docker create \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
-  -v /home/luiz/media-center-config/transmission:/config \
-  -v /home/luiz/Downloads:/downloads \
-  -v /home/luiz/Downloads:/watch \
+  -v /media/luiz/SAMSUNG/media-center/media-center-config/transmission:/config \
+  -v /media/luiz/SAMSUNG/media-center/downloads:/downloads \
+  -v /media/luiz/SAMSUNG/media-center/downloads/watch:/watch \
   linuxserver/transmission
-  # --restart unless-stopped \
+# --restart unless-stopped \
 
 docker start transmission
